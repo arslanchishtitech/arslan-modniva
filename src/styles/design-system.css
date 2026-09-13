@@ -1,0 +1,65 @@
+:root {
+  /* =========================
+     COLORS
+  ========================= */
+
+  --color-ivory: #f4f0e8;
+  --color-black: #0b0b0b;
+  --color-charcoal: #171717;
+  --color-stone: #c8c0b5;
+  --color-bronze: #9a8365;
+
+  --color-white: #ffffff;
+
+
+  /* =========================
+     TEXT
+  ========================= */
+
+  --text-primary: #111111;
+  --text-secondary: rgba(17, 17, 17, 0.68);
+  --text-muted: rgba(17, 17, 17, 0.48);
+
+  --text-light: #f4f0e8;
+  --text-light-secondary: rgba(244, 240, 232, 0.7);
+
+
+  /* =========================
+     SPACING
+  ========================= */
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 80px;
+  --space-8: 120px;
+  --space-9: 160px;
+
+
+  /* =========================
+     CONTAINER
+  ========================= */
+
+  --container-width: 1440px;
+  --page-padding: 48px;
+
+
+  /* =========================
+     RADIUS
+  ========================= */
+
+  --radius-small: 2px;
+  --radius-medium: 6px;
+
+
+  /* =========================
+     TRANSITIONS
+  ========================= */
+
+  --transition-fast: 200ms ease;
+  --transition-medium: 400ms ease;
+  --transition-slow: 700ms ease;
+}

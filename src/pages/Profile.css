@@ -1,0 +1,325 @@
+.profile-page {
+  background: #f5f3ef;
+  color: #111;
+}
+
+
+/* =========================
+   PROFILE HERO
+========================= */
+
+.profile-hero {
+  min-height: 100vh;
+  padding: 170px 48px 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.profile-label,
+.profile-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.profile-hero h1 {
+  margin-top: 70px;
+
+  font-size: clamp(80px, 15vw, 220px);
+  line-height: 0.8;
+  letter-spacing: -8px;
+  font-weight: 500;
+}
+
+.profile-hero h1 span {
+  display: block;
+  margin-left: 10vw;
+}
+
+.profile-intro {
+  margin-top: 45px;
+  max-width: 520px;
+
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(17, 17, 17, 0.7);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.profile-about {
+  padding: 140px 48px;
+
+  display: grid;
+  grid-template-columns: 0.7fr 1.5fr;
+  gap: 60px;
+
+  background: #111;
+  color: #f5f3ef;
+}
+
+.profile-about-content {
+  max-width: 900px;
+}
+
+.profile-about-content h2 {
+  margin-bottom: 55px;
+
+  font-size: clamp(55px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  font-weight: 500;
+}
+
+.profile-about-content h2 span {
+  display: block;
+  margin-left: 9vw;
+}
+
+.profile-about-content p {
+  max-width: 620px;
+
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(245, 243, 239, 0.72);
+}
+
+
+/* =========================
+   MODEL DETAILS
+========================= */
+
+.profile-details {
+  padding: 140px 48px;
+  background: #f5f3ef;
+  color: #111;
+}
+
+.profile-details-grid {
+  margin-top: 100px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+
+  border-top: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+.profile-details-grid > div {
+  padding-top: 24px;
+}
+
+.profile-details-grid span {
+  display: block;
+  margin-bottom: 24px;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  color: rgba(17, 17, 17, 0.55);
+}
+
+.profile-details-grid p {
+  margin-bottom: 10px;
+
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* =========================
+   DEVELOPMENT
+========================= */
+
+.profile-development {
+  padding: 140px 48px;
+
+  background: #e8e4dc;
+  color: #111;
+}
+
+.development-content {
+  margin-top: 100px;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+}
+
+.development-content h2 {
+  font-size: clamp(60px, 9vw, 135px);
+  line-height: 0.85;
+  letter-spacing: -5px;
+  font-weight: 500;
+}
+
+.development-content h2 span {
+  display: block;
+  margin-left: 9vw;
+}
+
+.development-list {
+  border-top: 1px solid rgba(17, 17, 17, 0.2);
+}
+
+.development-list p {
+  margin: 0;
+  padding: 20px 0;
+
+  border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   PROFILE CTA
+========================= */
+
+.profile-cta {
+  min-height: 55vh;
+  padding: 100px 48px;
+
+  background: #111;
+  color: #f5f3ef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.profile-cta p {
+  max-width: 600px;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+  line-height: 1.8;
+}
+
+.profile-cta a {
+  margin-top: 35px;
+
+  color: #f5f3ef;
+  text-decoration: none;
+
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+
+  transition: opacity 0.3s ease;
+}
+
+.profile-cta a:hover {
+  opacity: 0.55;
+}
+
+
+/* =========================
+   TABLET / MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .profile-hero {
+    min-height: 85vh;
+    padding: 130px 24px 75px;
+  }
+
+  .profile-hero h1 {
+    margin-top: 60px;
+
+    font-size: clamp(58px, 17vw, 105px);
+    letter-spacing: -4px;
+  }
+
+  .profile-hero h1 span {
+    margin-left: 10vw;
+  }
+
+  .profile-intro {
+    margin-top: 35px;
+    font-size: 15px;
+  }
+
+
+  .profile-about {
+    padding: 90px 24px;
+
+    grid-template-columns: 1fr;
+    gap: 55px;
+  }
+
+  .profile-about-content h2 {
+    margin-bottom: 40px;
+
+    font-size: clamp(48px, 14vw, 85px);
+    letter-spacing: -2px;
+  }
+
+  .profile-about-content h2 span {
+    margin-left: 10vw;
+  }
+
+  .profile-about-content p {
+    font-size: 15px;
+  }
+
+
+  .profile-details {
+    padding: 90px 24px;
+  }
+
+  .profile-details-grid {
+    margin-top: 65px;
+
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .profile-details-grid > div {
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+  }
+
+
+  .profile-development {
+    padding: 90px 24px;
+  }
+
+  .development-content {
+    margin-top: 65px;
+
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .development-content h2 {
+    font-size: clamp(50px, 15vw, 90px);
+    letter-spacing: -3px;
+  }
+
+  .development-content h2 span {
+    margin-left: 10vw;
+  }
+
+
+  .profile-cta {
+    min-height: 50vh;
+    padding: 80px 24px;
+  }
+
+  .profile-cta p {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+}
