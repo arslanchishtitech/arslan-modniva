@@ -1,0 +1,327 @@
+/* ==========================================================================
+   EXACT DESIGN MATCH - SIGNATURE STATEMENT SECTION
+   ========================================================================== */
+
+.signature-section {
+  width: 100%;
+  background-color: #F5F3EF;
+  padding: 100px var(--page-padding, 48px);
+  color: #111111;
+  box-sizing: border-box;
+}
+
+.signature-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.7fr;
+  gap: var(--space-5);
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+}
+
+/* LEFT COLUMN */
+.signature-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.meta-num-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.meta-line {
+  display: inline-block;
+  width: 64px;
+  height: 1px;
+  background-color: rgba(17, 17, 17, 0.2);
+}
+
+.signature-title {
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: clamp(38px, 3.8vw, 62px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-title em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.accent-line {
+  width: 44px;
+  height: 1.5px;
+  background-color: #9A8365;
+  margin-bottom: 28px;
+}
+
+.signature-description {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(17, 17, 17, 0.72);
+  max-width: 380px;
+}
+
+/* CENTER COLUMN (IMAGE PROPORTIONS FIXED) */
+.signature-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  width: 90%;
+  max-width: 350px;
+  height: 400px; /* Exact controlled height for desktop */
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* RIGHT COLUMN */
+.signature-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 380px; 
+  padding-left: var(--space-3);
+  margin-top: var(--space-3);
+  box-sizing: border-box;
+  border-left: 1px solid var(--color-stone);
+}
+
+.signature-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signature-tags li {
+  font-family: var(--font-body, "Manrope", sans-serif);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.tag-sep {
+  display: none;
+}
+
+.signature-brand {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.brand-name {
+  font-family: var(--font-display, "Cormorant Garamond", serif);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.brand-line {
+  width: 32px;
+  font-weight: var(--font-medium);
+  height: 1px;
+  background-color: var(--color-bronze);
+}
+
+/* ==========================================================================
+   TABLET VIEW (768px - 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .signature-section {
+    padding: 70px 48px;
+  }
+
+  .signature-container {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .signature-center .image-wrapper {
+    max-width: 100%;
+    height: 420px;
+  }
+
+  .signature-right {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: auto;
+    padding-left: 0;
+    margin-top: var(--space-4);
+    border-left: none;
+  }
+  .signature-brand-content{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: var(--space-4);
+  }
+  .signature-brand{
+    display: flex;
+    flex-direction: row;
+    
+  }
+
+  .signature-tags {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .tag-sep {
+    display: inline-block;
+    color: rgba(17, 17, 17, 0.3);
+  }
+  .meta-num-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================================================
+   MOBILE VIEW (320px - 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .signature-section {
+    padding: 48px 32px;
+  }
+
+  .signature-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-3) 20px;
+  }
+
+  .signature-meta {
+    justify-content: start;
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-3);
+  }
+  .meta-num-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .signature-title {
+    width: 100%;
+    font-size: 32px;
+    font-family: var(--font-display);
+    font-weight: var(--font-medium);
+    line-height: 1.05;
+    padding-left: var(--space-3);
+    margin-bottom: 20px;
+    
+  }
+ 
+  .accent-line {
+    margin-left: 24px;
+  }
+
+  .signature-description {
+    max-width: 100%;
+    font-size: 14px;
+    font-weight: var(--font-medium);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    padding-left: var(--space-3);
+    letter-spacing: 0.08em;
+  }
+
+  .signature-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    gap: var(--space-4);
+    margin-top: 28px;
+    margin-bottom: var(--space-3);
+  }
+
+  .signature-tags {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: var(--space-3);
+    font-weight: var(--font-medium);
+    letter-spacing: 0.08em;
+    
+  }
+
+  .tag-sep {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 16px;
+    padding-left: var(--space-3);
+  }
+  .brand-line{
+    background-color: var(--color-bronze);
+    margin-left: var(--space-3);
+    
+  }
+
+
+  /* Image Bottom Placement for Mobile */
+  .signature-center {
+    width: 100%;
+    order: 10;
+  }
+
+  .signature-center .image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: 250px; /* Controlled height as per design */
+  }
+
+  .signature-center .image-wrapper img {
+    object-position: center 15%;
+  }
+}

@@ -6,22 +6,82 @@
   --color-ivory: #f4f0e8;
   --color-black: #0b0b0b;
   --color-charcoal: #171717;
+  --color-charcoal-soft: #222222;
   --color-stone: #c8c0b5;
+  --color-stone-soft: #ded8cf;
   --color-bronze: #9a8365;
-
   --color-white: #ffffff;
+
+  --color-light: var(--color-ivory);
 
 
   /* =========================
-     TEXT
+     TEXT COLORS
   ========================= */
 
   --text-primary: #111111;
   --text-secondary: rgba(17, 17, 17, 0.68);
   --text-muted: rgba(17, 17, 17, 0.48);
 
-  --text-light: #f4f0e8;
-  --text-light-secondary: rgba(244, 240, 232, 0.7);
+  --text-light: var(--color-ivory);
+  --text-light-secondary: rgba(244, 240, 232, 0.72);
+  --text-light-muted: rgba(244, 240, 232, 0.5);
+
+
+  /* =========================
+     FONTS
+  ========================= */
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Manrope", sans-serif;
+
+
+  /* =========================
+     FONT WEIGHTS
+  ========================= */
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+
+  /* =========================
+     FONT SIZES
+  ========================= */
+
+  --text-xs: 10px;
+  --text-sm: 12px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 24px;
+  --text-xl: 32px;
+
+  --display-sm: clamp(48px, 6vw, 80px);
+  --display-md: clamp(64px, 9vw, 128px);
+  --display-lg: clamp(82px, 12vw, 180px);
+  --display-xl: clamp(100px, 15vw, 220px);
+
+
+  /* =========================
+     LETTER SPACING
+  ========================= */
+
+  --tracking-tight: -0.04em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.14em;
+  --tracking-widest: 0.22em;
+
+
+  /* =========================
+     LINE HEIGHT
+  ========================= */
+
+  --leading-tight: 0.82;
+  --leading-display: 0.92;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
 
 
   /* =========================
@@ -37,14 +97,21 @@
   --space-7: 80px;
   --space-8: 120px;
   --space-9: 160px;
+  --space-10: 220px;
 
 
   /* =========================
-     CONTAINER
+     LAYOUT
   ========================= */
 
   --container-width: 1440px;
+  --content-width: 1180px;
+  --narrow-width: 760px;
+
   --page-padding: 48px;
+  --section-padding: var(--space-9);
+
+  --navbar-height: 88px;
 
 
   /* =========================
@@ -53,13 +120,88 @@
 
   --radius-small: 2px;
   --radius-medium: 6px;
+  --radius-large: 12px;
+  --radius-pill: 999px;
+
+
+  /* =========================
+     BORDERS
+  ========================= */
+
+  --border-dark: rgba(17, 17, 17, 0.14);
+  --border-light: rgba(244, 240, 232, 0.18);
+  --border-light-strong: rgba(244, 240, 232, 0.35);
+
+
+  /* =========================
+     SHADOWS
+  ========================= */
+
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.16);
+
+  --shadow-deep: 0 30px 100px rgba(0, 0, 0, 0.28);
+
+
+  /* =========================
+     BACKDROPS
+  ========================= */
+
+  --backdrop-dark: rgba(11, 11, 11, 0.72);
+  --backdrop-light: rgba(244, 240, 232, 0.78);
 
 
   /* =========================
      TRANSITIONS
   ========================= */
 
-  --transition-fast: 200ms ease;
-  --transition-medium: 400ms ease;
-  --transition-slow: 700ms ease;
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --transition-fast: 200ms var(--ease-smooth);
+  --transition-medium: 400ms var(--ease-smooth);
+  --transition-slow: 700ms var(--ease-luxury);
+  --transition-cinematic: 1200ms var(--ease-luxury);
+
+
+  /* =========================
+     Z-INDEX
+  ========================= */
+
+  --z-base: 1;
+  --z-content: 2;
+  --z-navbar: 100;
+  --z-menu: 200;
+  --z-modal: 500;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN TOKENS
+========================= */
+
+@media (max-width: 1024px) {
+  :root {
+    --page-padding: 32px;
+    --section-padding: var(--space-8);
+    --navbar-height: 80px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 24px;
+    --section-padding: var(--space-7);
+    --navbar-height: 72px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 20px;
+    --section-padding: var(--space-6);
+  }
 }

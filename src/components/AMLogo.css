@@ -1,0 +1,80 @@
+/* =========================================
+   AM MONOGRAM — PREMIUM LOGO
+========================================= */
+
+.am-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  color: var(--color-ivory);
+
+  opacity: 0.96;
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-medium);
+}
+
+.am-logo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-medium);
+}
+
+/* =========================================
+   HOVER
+========================================= */
+
+.am-logo:hover {
+  opacity: 0.78;
+  transform: translateY(-1px);
+}
+
+.am-logo:hover img {
+  transform: scale(1.02);
+}
+
+/* =========================================
+   ACTIVE
+========================================= */
+
+.am-logo:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .am-logo {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .am-logo,
+  .am-logo img {
+    transition: none;
+  }
+}

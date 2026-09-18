@@ -1,26 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap');
 
 @import './styles/design-system.css';
 
 
-* {
+/* =========================
+   GLOBAL RESET
+========================= */
+
+/* 1. Global Box-Sizing & Margin Reset */
+*, *::before, *::after {
+  box-sizing: border-box !important;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+
+/* =========================
+   HTML
+========================= */
+
+html, body {
+  width: 100%;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  position: relative;
 }
+
+
+/* =========================
+   BODY
+========================= */
 
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-body);
   background: var(--color-ivory);
   color: var(--text-primary);
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
 
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   text-rendering: optimizeLegibility;
 }
+
+
+/* =========================
+   ROOT
+========================= */
+
+#root, .App {
+  width: 100%;
+  max-width: 100% !important;
+  overflow-x: hidden;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-display);
+}
+
+p {
+  font-family: var(--font-body);
+  line-height: var(--leading-normal);
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================
+   BUTTONS & FORM ELEMENTS
+========================= */
 
 button,
 input,
@@ -29,10 +98,90 @@ select {
   font: inherit;
 }
 
+button {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+
+/* =========================
+   IMAGES
+========================= */
+
 img {
+  display: block;
   max-width: 100%;
 }
 
-a {
-  color: inherit;
+
+/* =========================
+   MEDIA
+========================= */
+
+video,
+canvas {
+  display: block;
+  max-width: 100%;
 }
+
+
+/* =========================
+   LISTS
+========================= */
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+  background: var(--color-black);
+  color: var(--color-ivory);
+}
+
+
+/* =========================
+   FOCUS
+========================= */
+
+:focus-visible {
+  outline: 1px solid var(--color-bronze);
+  outline-offset: 4px;
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
