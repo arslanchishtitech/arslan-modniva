@@ -1,52 +1,76 @@
-import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import './Navbar.css'
-import AMLogo from './AMLogo'
+import { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import './Navbar.css';
+import AMLogo from './AMLogo';
+import SearchOverlay from './SearchOverlay';
 
 const Navbar = () => {
-  const location = useLocation()
+  const location = useLocation();
 
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Navbar scroll state.
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
-    }
+      setIsScrolled(window.scrollY > 40);
+    };
 
-    handleScroll()
+    handleScroll();
 
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [location.pathname, location.hash])
-
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      document.body.style.overflow = ''
-    }
-  }, [isMenuOpen])
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Route change hone par mobile menu close.
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname, location.hash]);
+
+  // Mobile menu ke waqt body scrolling lock.
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen
+      ? 'hidden'
+      : '';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   const navItems = [
-    { label: 'WORK', path: '/portfolio' },
-    { label: 'DIGITALS', path: '/digitals' },
-    { label: 'PROFILE', path: '/profile' },
-    { label: 'COMP CARD', path: '/comp-card' },
-    { label: 'BOOK ARSLAN', path: '/book' },
-  ]
+    {
+      label: 'WORK',
+      path: '/portfolio',
+    },
+    {
+      label: 'DIGITALS',
+      path: '/digitals',
+    },
+    {
+      label: 'PROFILE',
+      path: '/profile',
+    },
+    {
+      label: 'COMP CARD',
+      path: '/comp-card',
+    },
+    {
+      label: 'BOOK ARSLAN',
+      path: '/book',
+    },
+  ];
 
   return (
     <nav
       className={`navbar ${
-        isScrolled ? 'navbar-scrolled' : 'navbar-top'
+        isScrolled
+          ? 'navbar-scrolled'
+          : 'navbar-top'
       }`}
     >
       <div className="navbar-inner">
@@ -72,16 +96,19 @@ const Navbar = () => {
         {/* Actions */}
         <div className="navbar-actions">
 
-          {/* Search */}
+          {/* Search button ONLY contains the search icon */}
           <button
+            onClick={() => setSearchOpen(true)}
             type="button"
             className="navbar-search"
-            aria-label="Search"
+            aria-label="Open search"
+            aria-expanded={searchOpen}
+            aria-controls="site-search-dialog"
           >
             <span className="search-icon" />
           </button>
 
-          {/* Mobile Menu */}
+          {/* Mobile menu */}
           <button
             type="button"
             className={`navbar-menu-toggle ${
@@ -91,7 +118,9 @@ const Navbar = () => {
               setIsMenuOpen((previous) => !previous)
             }
             aria-label={
-              isMenuOpen ? 'Close menu' : 'Open menu'
+              isMenuOpen
+                ? 'Close menu'
+                : 'Open menu'
             }
             aria-expanded={isMenuOpen}
           >
@@ -101,6 +130,15 @@ const Navbar = () => {
 
         </div>
       </div>
+
+      {/* =====================================================
+          IMPORTANT:
+          SearchOverlay MUST be OUTSIDE the search button.
+      ====================================================== */}
+      <SearchOverlay
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
 
       {/* Mobile Menu */}
       <div
@@ -118,7 +156,10 @@ const Navbar = () => {
               }
             >
               <span>{item.label}</span>
-              <span className="navbar-mobile-arrow">↗</span>
+
+              <span className="navbar-mobile-arrow">
+                ↗
+              </span>
             </NavLink>
           ))}
         </div>
@@ -128,7 +169,7 @@ const Navbar = () => {
         </p>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

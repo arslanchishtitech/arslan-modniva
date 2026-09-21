@@ -1,114 +1,202 @@
-import './Profile.css'
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import profileSnapshot from "../assets/images/profile-snapshot.jpg";
+import signatureModel from "../assets/images/signature-model.jpg";
+import portrait03 from "../assets/images/work-01.jpg";
+import portrait04 from "../assets/images/work-02.jpg";
+import ctaImage from "../assets/images/presence-motion-main.jpg";
+import "./Profile.css";
 
-const Profile = () => {
+function Profile() {
+  useEffect(() => {
+    document.body.classList.add("digitals-page");
+
+    return () => {
+        document.body.classList.remove("digitals-page");
+    };
+    }, []);
+  const portraits = [
+    {
+      src: profileSnapshot,
+      alt: "Arslan Modniva portrait front view",
+      label: "Portrait 01",
+    },
+    {
+      src: signatureModel,
+      alt: "Arslan Modniva portrait profile view",
+      label: "Portrait 02",
+    },
+    {
+      src: portrait03,
+      alt: "Arslan Modniva editorial portrait",
+      label: "Portrait 03",
+    },
+    {
+      src: portrait04,
+      alt: "Arslan Modniva portrait",
+      label: "Portrait 04",
+    },
+  ];
+
   return (
-    <main className="profile-page">
-
+    <main className="profile-page-content">
+      {/* =====================================================
+          01. PROFILE HERO
+      ====================================================== */}
       <section className="profile-hero">
-        <p className="profile-label">
-          PROFILE
-        </p>
+        <div className="page-shell profile-hero__grid">
+          <div className="profile-hero__copy">
+            <p className="eyebrow">Profile</p>
 
-        <h1>
-          ARSLAN
-          <span>MODNIVA</span>
-        </h1>
+            <h1 className="profile-hero__title">
+              <span>Natural Presence.</span>
+              <span>Real Impact.</span>
+            </h1>
 
-        <p className="profile-intro">
-          Pakistan-based emerging fashion model
-          building toward professional and
-          international opportunities.
-        </p>
-      </section>
-
-      <section className="profile-about" id="about">
-        <div className="profile-section-label">
-          ABOUT
-        </div>
-
-        <div className="profile-about-content">
-          <h2>
-            Building presence
-            <span>through discipline.</span>
-          </h2>
-
-          <p>
-            Arslan Modniva is an emerging fashion model
-            developing through structured training,
-            consistent practice and a strong focus on
-            natural presence, movement and visual
-            expression.
-          </p>
-        </div>
-      </section>
-
-      <section className="profile-details">
-        <div className="profile-section-label">
-          MODEL DETAILS
-        </div>
-
-        <div className="profile-details-grid">
-
-          <div>
-            <span>BASE</span>
-            <p>Pakistan</p>
+            <p className="profile-hero__description">
+              Explore a curated profile built around versatility, personality
+              and professional presence across different moods and aesthetics.
+            </p>
           </div>
 
-          <div>
-            <span>FOCUS</span>
-            <p>Fashion</p>
-            <p>Editorial</p>
-            <p>Commercial</p>
-          </div>
+          <figure className="profile-hero__media">
+            <img
+              src={profileSnapshot}
+              alt="Arslan Modniva profile portrait"
+              fetchPriority="high"
+            />
+          </figure>
 
-          <div>
-            <span>AVAILABILITY</span>
-            <p>Castings</p>
-            <p>Editorials</p>
-            <p>Commercial Projects</p>
-            <p>Creative Collaborations</p>
-          </div>
-
-        </div>
-      </section>
-
-      <section className="profile-development">
-        <div className="profile-section-label">
-          DEVELOPMENT
-        </div>
-
-        <div className="development-content">
-          <h2>
-            Skills in
-            <span>progress.</span>
-          </h2>
-
-          <div className="development-list">
-            <p>Posture & Presence</p>
-            <p>Walking</p>
-            <p>Stopping</p>
-            <p>Posing</p>
-            <p>Expression</p>
-            <p>Camera Awareness</p>
-            <p>Professional Communication</p>
-            <p>Casting Readiness</p>
+          <div className="profile-hero__index" aria-label="Profile section index">
+            <span>01</span>
+            <span className="profile-hero__index-line" aria-hidden="true" />
+            <span>04</span>
           </div>
         </div>
       </section>
 
-      <section className="profile-cta">
-        <p>
-          AVAILABLE FOR CASTINGS, EDITORIALS
-          AND CREATIVE COLLABORATIONS.
-        </p>
+      {/* =====================================================
+          02. PORTRAITS
+      ====================================================== */}
+      <section className="profile-portraits section-light">
+        <div className="page-shell">
+          <div className="profile-section-heading">
+            <p className="eyebrow">Portraits</p>
+            <div className="profile-section-heading__rule" aria-hidden="true" />
+          </div>
 
-        <a href="/contact">
-          GET IN TOUCH →
-        </a>
+          <div className="profile-portraits__grid">
+            {portraits.map((portrait) => (
+              <figure className="profile-portrait-card" key={portrait.label}>
+                <img src={portrait.src} alt={portrait.alt} loading="lazy" />
+                <figcaption>{portrait.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
       </section>
 
+      {/* =====================================================
+          03. QUICK OVERVIEW
+      ====================================================== */}
+      <section className="profile-overview">
+        <div className="page-shell profile-overview__grid">
+          <div className="profile-overview__intro">
+            <p className="eyebrow eyebrow--light">Quick Overview</p>
+            <h2>
+              Versatile. Expressive.
+              <br />
+              Professional.
+            </h2>
+          </div>
+
+          <dl className="profile-overview__details">
+            <div>
+              <dt>Height</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Chest</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Waist</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Shoes</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Hair</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Eyes</dt>
+              <dd>—</dd>
+            </div>
+          </dl>
+
+          <div className="profile-overview__casting">
+            <p className="eyebrow eyebrow--light">Casting Information</p>
+            <p>
+              Available for commercial, editorial, fashion and lifestyle
+              projects.
+            </p>
+
+            <div className="profile-overview__meta">
+              <div>
+                <span aria-hidden="true" className="profile-meta-icon">⌖</span>
+                <div>
+                  <small>Based In</small>
+                  <strong>Pakistan</strong>
+                </div>
+              </div>
+
+              <div>
+                <span aria-hidden="true" className="profile-meta-icon">◎</span>
+                <div>
+                  <small>Availability</small>
+                  <strong>Open</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          04. BOOKING CTA
+      ====================================================== */}
+      <section className="profile-booking-cta">
+        <div className="profile-booking-cta__media" aria-hidden="true">
+          <img src={ctaImage} alt="" loading="lazy" />
+        </div>
+        <div className="profile-booking-cta__overlay" aria-hidden="true" />
+
+        <div className="page-shell profile-booking-cta__inner">
+          <p className="eyebrow eyebrow--light">Let's Work Together</p>
+
+          <div className="profile-booking-cta__row">
+            <div>
+              <h2>
+                <span>Book Arslan</span>
+                <span>for Your Next Project.</span>
+              </h2>
+              <p>
+                For bookings, inquiries or collaborations, feel free to get in
+                touch.
+              </p>
+            </div>
+
+            <Link to="/book" className="profile-cta-link">
+              Get in Touch <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

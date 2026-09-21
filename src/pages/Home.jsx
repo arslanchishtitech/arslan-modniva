@@ -1,6 +1,5 @@
 import HeroSection from '../components/HeroSection'
 import './Home.css'
-import IntroSection from '../components/IntroSection'
 import SelectedWork from '../components/SelectedWork'
 import ProfileSnapshot from '../components/ProfileSnapshot'
 import PresenceInMotion from '../components/PresenceInMotion'
@@ -15,7 +14,7 @@ const Home = () => {
        
        <HeroSection />
        <SignatureStatement />
-       <IntroSection />
+       
        <SelectedWork />
        <ProfileSnapshot />
        <PresenceInMotion />

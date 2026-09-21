@@ -236,6 +236,10 @@
   .hero-background {
     width: 46%;
   }
+   .hero-section {
+     min-height: 600px;
+  }
+
 
   .hero-content {
     position: absolute;
@@ -315,6 +319,9 @@
 ========================================= */
 
 @media (min-width: 481px) and (max-width: 768px) {
+   .hero-section {
+     min-height: 600px;
+  }
 
   .hero-background {
     width: 44%;
@@ -410,7 +417,7 @@
 @media (max-width: 480px) {
 
   .hero-section {
-    min-height: 100svh;
+     min-height: 500px;
   }
 
   .hero-background {

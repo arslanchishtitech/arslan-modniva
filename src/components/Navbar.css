@@ -579,3 +579,57 @@
     animation: none;
   }
 }
+
+/* =========================================================
+   DIGITALS PAGE NAVBAR
+   Light hero ke upar dark navbar
+========================================================= */
+
+body.digitals-page .navbar {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+/* Agar navbar transparent state mein background hata deta hai */
+body.digitals-page .navbar:not(.navbar--scrolled) {
+  background: var(--color-black);
+}
+
+/* Links */
+body.digitals-page .navbar a {
+  color: var(--color-white);
+}
+
+/* Buttons / menu icon agar currentColor use karte hain */
+body.digitals-page .navbar button,
+body.digitals-page .navbar svg {
+  color: var(--color-white);
+}
+
+/* =========================================================
+   BOOK PAGE NAVBAR
+   Light hero ke liye dark navbar
+========================================================= */
+
+body.book-page .navbar {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-bottom: 1px solid rgba(244, 240, 232, 0.12);
+}
+
+/* Top par transparent state ko bhi black rakho */
+body.book-page .navbar:not(.navbar--scrolled) {
+  background: var(--color-black);
+}
+
+/* Navigation links */
+body.book-page .navbar a {
+  color: var(--color-white);
+}
+
+/* Buttons / icons */
+body.book-page .navbar button,
+body.book-page .navbar svg {
+  color: var(--color-white);
+}

@@ -1,137 +1,379 @@
-.presence {
-  padding: 150px 48px;
-  background: #f5f3ef;
-  color: #111;
-}
+/* ==========================================================================
+   PRESENCE IN MOTION - EXACT FIGMA PIXEL PERFECT SPECIFICATIONS
+   ========================================================================== */
 
-.presence-header {
-  display: grid;
-  grid-template-columns: 0.7fr 1.5fr;
-  gap: 60px;
-  margin-bottom: 100px;
-}
-
-.presence-label {
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
-
-.presence-header h2 {
-  max-width: 850px;
-  font-size: clamp(60px, 8vw, 125px);
-  line-height: 0.9;
-  letter-spacing: -4px;
-  font-weight: 500;
-}
-
-.presence-header h2 span {
-  display: block;
-  margin-left: 10vw;
-}
-
-.presence-image-wrapper {
+/* SECTION WRAPPER */
+.presence-motion-section {
   width: 100%;
-  height: min(80vh, 850px);
-  overflow: hidden;
+  background-color: #F5F3EF; /* Exact Light Ivory Background */
+  padding: 100px 32px;
+  color: #111111;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
 }
 
-.presence-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.8s ease;
-}
-
-.presence-image-wrapper:hover .presence-image {
-  transform: scale(1.03);
-}
-
-.presence-bottom {
-  margin-top: 55px;
-  display: grid;
-  grid-template-columns: 1.4fr 0.8fr;
-  gap: 100px;
-}
-
-.presence-skills {
+.presence-motion-container {
+  max-width: 1320px;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-  align-content: start;
+  flex-direction: column;
 }
 
-.presence-skills span {
+/* --------------------------------------------------------------------------
+   HEADER SECTION
+   -------------------------------------------------------------------------- */
+.presence-motion-header {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+/* LEFT CONTENT */
+.presence-motion-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.presence-motion-meta {
+  margin-bottom: 20px;
+}
+
+.meta-num {
   font-size: 11px;
-  letter-spacing: 2px;
-  border-bottom: 1px solid #111;
-  padding-bottom: 6px;
-}
-
-.presence-description {
-  max-width: 420px;
-}
-
-.presence-description p {
-  font-size: 16px;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-
-.presence-description a {
-  color: #111;
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: 2px;
   font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #111111;
 }
 
-@media (max-width: 768px) {
-  .presence {
-    padding: 90px 24px;
-  }
-
-  .presence-header {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    margin-bottom: 65px;
-  }
-
-  .presence-header h2 {
-    font-size: clamp(52px, 15vw, 90px);
-    letter-spacing: -2px;
-  }
-
-  .presence-header h2 span {
-    margin-left: 10vw;
-  }
-
-  .presence-image-wrapper {
-    height: 65vh;
-  }
-
-  .presence-bottom {
-    grid-template-columns: 1fr;
-    gap: 55px;
-  }
-
-  .presence-skills {
-    gap: 12px 20px;
-  }
+.presence-motion-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 62px;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #111111;
+  margin: 0 0 24px 0;
 }
 
-.presence-image {
+.accent-gold {
+  color: #9A8365; /* Exact Figma Accent Color */
+}
+
+.presence-motion-description {
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #686868; /* Exact Secondary Text Color */
+  max-width: 410px;
+  margin: 0 0 28px 0;
+}
+
+.presence-motion-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #111111;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.presence-motion-link .link-arrow {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.presence-motion-link:hover .link-arrow {
+  transform: translateX(5px);
+}
+
+/* RIGHT NAVIGATION MENU WITH VERTICAL BORDER */
+.presence-motion-nav {
+  border-left: 1px solid rgba(17, 17, 17, 0.15); /* Thin Left Vertical Bar */
+  padding-left: 24px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.nav-item {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.4);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: #9A8365; /* Gold Accent on active/hover */
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 28px;
+  height: 1.5px;
+  background-color: #9A8365;
+}
+
+/* --------------------------------------------------------------------------
+   MEDIA GRID SECTION
+   -------------------------------------------------------------------------- */
+.presence-motion-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* MAIN IMAGE SLANTED DESIGN */
+.media-main-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 4px;
+  /* Slanted dynamic top border effect matching design */
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
+
+.media-main-card {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
+  background-color: #111111;
 }
 
-@media (max-width: 768px) {
-  .hero-image {
-    background-position: center top;
+.media-main-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* PLAY BUTTON OVERLAY */
+.main-overlay {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  z-index: 2;
+}
+
+.play-button-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.play-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.play-icon {
+  font-size: 10px;
+  transform: rotate(90deg);
+  margin-left: 2px;
+}
+
+.play-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: #FFFFFF;
+}
+
+.play-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.play-duration {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* SIDE CARDS */
+.presence-motion-side-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.side-card {
+  position: relative;
+  width: 100%;
+  height: 244px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.side-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.side-card-overlay {
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #FFFFFF;
+  z-index: 2;
+}
+
+.side-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.side-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.side-card-year {
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+.side-card-num {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL INDICATOR
+   -------------------------------------------------------------------------- */
+.presence-motion-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 32px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+/* ==========================================================================
+   TABLET VIEW (768px - 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .presence-motion-section {
+    padding: 80px 24px;
+  }
+
+  .presence-motion-header {
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+  }
+
+  .presence-motion-title {
+    font-size: 52px;
+  }
+
+  .presence-motion-grid {
+    grid-template-columns: 1fr 0.9fr;
+    gap: 24px;
+  }
+
+  .media-main-wrapper {
+    height: 420px;
+  }
+
+  .side-card {
+    height: 194px;
+  }
+}
+
+/* ==========================================================================
+   MOBILE VIEW (320px - 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+  .presence-motion-section {
+    padding: 56px 20px;
+  }
+
+  .presence-motion-header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .presence-motion-title {
+    font-size: 42px;
+  }
+
+  .presence-motion-nav {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(17, 17, 17, 0.15);
+    padding-top: 16px;
+    width: 100%;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .presence-motion-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .media-main-wrapper {
+    height: 380px;
+    clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .presence-motion-side-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mobile par 2 side-by-side neat cards */
+    gap: 16px;
+  }
+
+  .side-card {
+    height: 200px;
   }
 }

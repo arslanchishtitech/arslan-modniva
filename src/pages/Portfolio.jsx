@@ -1,253 +1,282 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Portfolio.css'
 
-import work01 from '../assets/images/work-01.jpg'
-import work02 from '../assets/images/work-02.jpg'
-import work03 from '../assets/images/work-03.jpg'
-import work04 from '../assets/images/work-04.jpg'
+import portfolioData from '../data/portfolioData'
+import portfolioHeroImage from '../assets/images/presence-motion-01.jpg'
 
-const portfolioItems = [
-  {
-    id: 1,
-    category: 'PORTRAIT',
-    year: '2026',
-    image: work01,
-  },
-  {
-    id: 2,
-    category: 'EDITORIAL',
-    year: '2026',
-    image: work02,
-  },
-  {
-    id: 3,
-    category: 'FASHION',
-    year: '2026',
-    image: work03,
-  },
-  {
-    id: 4,
-    category: 'DIGITALS',
-    year: '2026',
-    image: work04,
-  },
-]
-
-const categories = [
+const tabs = [
   'ALL',
-  'EDITORIAL',
   'FASHION',
-  'PORTRAIT',
+  'EDITORIAL',
   'COMMERCIAL',
-  'DIGITALS',
+  'CASTING',
 ]
 
 const Portfolio = () => {
-  const [activeCategory, setActiveCategory] = useState('ALL')
-  const [selectedImage, setSelectedImage] = useState(null)
+  const [activeTab, setActiveTab] = useState('ALL')
+  const [sortOrder, setSortOrder] = useState('NEWEST')
 
   const filteredItems =
-    activeCategory === 'ALL'
-      ? portfolioItems
-      : portfolioItems.filter(
-          (item) => item.category === activeCategory
+    activeTab === 'ALL'
+      ? portfolioData
+      : portfolioData.filter(
+          (item) => item.category === activeTab
         )
 
-  const openLightbox = (item) => {
-    setSelectedImage(item)
-  }
+  const sortedItems = [...filteredItems].sort((a, b) => {
+    const yearA = Number(a.year)
+    const yearB = Number(b.year)
 
-  const closeLightbox = () => {
-    setSelectedImage(null)
-  }
-
-  const goToNext = () => {
-    const currentIndex = filteredItems.findIndex(
-      (item) => item.id === selectedImage.id
-    )
-
-    const nextIndex =
-      (currentIndex + 1) % filteredItems.length
-
-    setSelectedImage(filteredItems[nextIndex])
-  }
-
-  const goToPrevious = () => {
-    const currentIndex = filteredItems.findIndex(
-      (item) => item.id === selectedImage.id
-    )
-
-    const previousIndex =
-      (currentIndex - 1 + filteredItems.length) %
-      filteredItems.length
-
-    setSelectedImage(filteredItems[previousIndex])
-  }
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (!selectedImage) return
-
-      if (event.key === 'Escape') {
-        closeLightbox()
-      }
-
-      if (event.key === 'ArrowRight') {
-        goToNext()
-      }
-
-      if (event.key === 'ArrowLeft') {
-        goToPrevious()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [selectedImage, filteredItems])
+    return sortOrder === 'NEWEST'
+      ? yearB - yearA
+      : yearA - yearB
+  })
 
   return (
     <main className="portfolio-page">
 
-      <section className="portfolio-header">
-        <p className="portfolio-label">
-          PORTFOLIO
-        </p>
+      {/* ================= HERO ================= */}
 
-        <h1>
-          A visual study of
-          <span>presence & perspective.</span>
-        </h1>
+      <section className="portfolio-hero">
 
-        <p className="portfolio-description">
-          A curated collection of portraits, editorial
-          imagery, fashion studies and digital work.
-        </p>
-      </section>
-
-      <section className="portfolio-gallery">
-
-        <div className="portfolio-filters">
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={
-                activeCategory === category
-                  ? 'filter-button active'
-                  : 'filter-button'
-              }
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="portfolio-hero-image">
+          <img
+            src={portfolioHeroImage}
+            alt="Arslan Modniva"
+          />
         </div>
 
-        <div className="portfolio-grid">
-          {filteredItems.map((item, index) => (
-            <article
-              className={`portfolio-item portfolio-item-${index + 1}`}
-              key={item.id}
-            >
-              <button
-                type="button"
-                className="portfolio-image-button"
-                onClick={() => openLightbox(item)}
-                aria-label={`Open ${item.category} image`}
-              >
-                <div className="portfolio-image-wrapper">
-                  <img
-                    src={item.image}
-                    alt={`${item.category} — Arslan Modniva`}
-                    className="portfolio-image"
-                  />
+        <div className="portfolio-hero-overlay" />
 
-                  <div className="portfolio-overlay">
-                    <span>VIEW</span>
-                    <span>↗</span>
-                  </div>
-                </div>
-              </button>
+        <div className="portfolio-hero-inner">
 
-              <div className="portfolio-meta">
-                <span>{item.category}</span>
-                <span>{item.year}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-
-      </section>
-
-      {selectedImage && (
-        <div
-          className="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Portfolio image viewer"
-          onClick={closeLightbox}
-        >
-          <div
-            className="lightbox-content"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              className="lightbox-close"
-              onClick={closeLightbox}
-              aria-label="Close image viewer"
-            >
-              ×
-            </button>
-
-            <img
-              src={selectedImage.image}
-              alt={`${selectedImage.category} — Arslan Modniva`}
-              className="lightbox-image"
-            />
-
-            <div className="lightbox-info">
-              <div>
-                <span>{selectedImage.category}</span>
-                <span>{selectedImage.year}</span>
-              </div>
-
-              <div>
-                <span>
-                  {
-                    filteredItems.findIndex(
-                      (item) => item.id === selectedImage.id
-                    ) + 1
-                  }
-                </span>
-
-                <span>/ {filteredItems.length}</span>
-              </div>
-            </div>
-
-            <div className="lightbox-controls">
-              <button
-                type="button"
-                onClick={goToPrevious}
-                aria-label="Previous image"
-              >
-                ← PREVIOUS
-              </button>
-
-              <button
-                type="button"
-                onClick={goToNext}
-                aria-label="Next image"
-              >
-                NEXT →
-              </button>
-            </div>
+          <div className="portfolio-hero-label">
+            <span className="portfolio-label-line" />
+            <span>PORTFOLIO</span>
           </div>
+
+          <h1 className="portfolio-hero-title">
+            <span className="portfolio-hero-work">
+              WORK
+            </span>
+
+            <span className="portfolio-hero-bronze">
+              THAT DEFINES
+            </span>
+
+            <span className="portfolio-hero-bronze">
+              THE JOURNEY.
+            </span>
+          </h1>
+
+          <p className="portfolio-hero-description">
+            A curated collection of fashion, editorial,
+            commercial and casting work.
+          </p>
+
         </div>
-      )}
+
+        <div className="portfolio-hero-bottom">
+          <span>ARSLAN MODNIVA</span>
+
+          <span>
+            FASHION / EDITORIAL / COMMERCIAL
+          </span>
+        </div>
+
+      </section>
+
+
+      {/* ================= SELECTED WORK ================= */}
+
+      <section
+        className="portfolio-work-section"
+        id="all-work"
+      >
+
+        <div className="portfolio-work-container">
+
+          {/* LEFT EDITORIAL COLUMN */}
+
+          <div className="portfolio-work-intro">
+
+            <div className="portfolio-work-meta">
+              <span>01 / 05</span>
+              <span className="portfolio-work-meta-line" />
+            </div>
+
+            <h2 className="portfolio-work-title">
+              <span>SELECTED</span>
+              <span>WORK</span>
+            </h2>
+
+            <p className="portfolio-work-description">
+              A visual archive of projects, stories and
+              moments that shape the journey.
+            </p>
+
+            <Link
+              to="/portfolio"
+              className="portfolio-view-all"
+            >
+              <span>VIEW ALL WORK</span>
+              <span>→</span>
+            </Link>
+
+          </div>
+
+
+          {/* RIGHT WORK LIBRARY */}
+
+          <div className="portfolio-work-library">
+
+            <div className="portfolio-filter-bar">
+
+              <div className="portfolio-tabs">
+
+                {tabs.map((tab) => (
+                  <button
+                    key={tab}
+                    type="button"
+                    className={
+                      activeTab === tab
+                        ? 'portfolio-tab is-active'
+                        : 'portfolio-tab'
+                    }
+                    onClick={() => setActiveTab(tab)}
+                  >
+                    {tab}
+                  </button>
+                ))}
+
+              </div>
+
+              <div className="portfolio-sort">
+
+                <span>SORT BY</span>
+
+                <select
+                  value={sortOrder}
+                  onChange={(event) =>
+                    setSortOrder(event.target.value)
+                  }
+                  aria-label="Sort portfolio"
+                >
+                  <option value="NEWEST">
+                    Newest
+                  </option>
+
+                  <option value="OLDEST">
+                    Oldest
+                  </option>
+                </select>
+
+              </div>
+
+            </div>
+
+
+            {/* WORK GRID */}
+
+            <div className="portfolio-grid">
+
+              {sortedItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={`/portfolio/${item.slug}`}
+                  className="portfolio-card"
+                >
+
+                  <div className="portfolio-card-media">
+
+                    <img
+                      src={item.image}
+                      alt={`${item.title} — Arslan Modniva`}
+                      loading="lazy"
+                    />
+
+                    <div className="portfolio-card-overlay" />
+
+                    <div className="portfolio-card-info">
+
+                      <div className="portfolio-card-copy">
+
+                        <span className="portfolio-card-number">
+                          {item.id}
+                        </span>
+
+                        <h3>
+                          {item.title}
+                        </h3>
+
+                        <p>
+                          {item.category}
+                          <span>/</span>
+                          {item.year}
+                        </p>
+
+                      </div>
+
+                      <span className="portfolio-card-arrow">
+                        →
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </Link>
+              ))}
+
+            </div>
+
+
+            {sortedItems.length === 0 && (
+              <div className="portfolio-empty">
+                NO WORK AVAILABLE.
+              </div>
+            )}
+
+          </div>
+
+        </div>
+
+
+        {/* BOTTOM EDITORIAL BAR */}
+
+        <div className="portfolio-bottom-bar">
+
+          <div className="portfolio-bottom-side">
+
+            <span className="portfolio-bottom-line" />
+
+            <span>
+              MORE WORKS AWAIT
+            </span>
+
+          </div>
+
+
+          <div className="portfolio-scroll">
+            <span>SCROLL</span>
+            <span>↓</span>
+          </div>
+
+
+          <div className="portfolio-bottom-side portfolio-bottom-side-right">
+
+            <span>
+              EXPLORE THE FULL PORTFOLIO
+            </span>
+
+            <span className="portfolio-bottom-line" />
+
+          </div>
+
+        </div>
+
+      </section>
 
     </main>
   )
